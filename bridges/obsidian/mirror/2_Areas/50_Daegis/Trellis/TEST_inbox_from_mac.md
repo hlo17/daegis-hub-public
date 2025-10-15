@@ -6,6 +6,8 @@ created: 2025-10-15T15:10:01Z
 updated: 2025-10-15T07:43:24Z
 ---
 
+[[Public Mirror]]
+
 [[GitHub Repositories]]
 
 [[自動参照の件]]
