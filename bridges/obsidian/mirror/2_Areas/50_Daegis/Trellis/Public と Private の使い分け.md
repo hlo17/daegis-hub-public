@@ -6,6 +6,8 @@ aliases:
 created: 2025-10-15T07:46:01Z
 updated: 2025-10-15T07:50:49Z
 ---
+# Public と Private の使い分け
+
 
 ## Public/Privateの使い分け（簡潔な指針）
 

@@ -50,7 +50,7 @@ Trellis は「ガーデンの日常リズムを回す」ための簡易パネル
 
 ```
 trellis
-# または gardener → 2) Trellis Menu
+# Trellis
 ```
 
 #### **メニュー例**

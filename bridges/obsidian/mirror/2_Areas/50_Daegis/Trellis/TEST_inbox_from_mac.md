@@ -20,7 +20,7 @@ updated: 2025-10-15T07:43:24Z
 
 [[Lyra note — Public Mirror & Memory Plan]]
 
-# **Phase の整理（2D/3以降）**
+# TEST_inbox_from_mac
 
 - **Phase 2D（Halu観察→Relay同期）**
     まだ“正式運用”は未了（ログやBriefの定期観測を公開側で読めるところまで繋いだら完了）。

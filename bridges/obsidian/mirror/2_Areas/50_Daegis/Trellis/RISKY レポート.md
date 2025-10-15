@@ -7,6 +7,8 @@ created: 2025-10-15 14:53
 modified: 2025-10-15 14:53
 Derivative from: "[[“触っちゃダメ”最終確認（Hubへ入れない）]]"
 ---
+# RISKY レポート
+
 
 ```
 (.venv) f@round-table:~/daegis$ cd ~/daegis
