@@ -2,3 +2,5 @@
 secrets/
 **/webhook*.txt
 **/*secret*
+# ignore local grafana data
+ops/grafana/grafana-data/
