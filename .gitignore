@@ -1,12 +1,20 @@
-.env
-secrets/
-**/webhook*.txt
-**/*secret*
-# ignore local grafana data
-ops/grafana/grafana-data/
-bridges/obsidian/mirror/2_Areas/50_Daegis/Daegis OS/Relay/
-# Hide mirrored private areas from public
-bridges/obsidian/mirror/2_Areas/50_Daegis/Daegis OS/Relay/**
-bridges/obsidian/mirror/2_Areas/50_Daegis/Gardener/**
-bridges/obsidian/mirror/Garden Tree.md
-bridges/obsidian/mirror/Space.md
+# --- deny-all, then allowlist ---
+/*
+
+# keep repo hygiene
+!.gitignore
+!DO-NOT-CLONE.md
+
+# minimal public landing
+!README.md
+!Public_Index.md
+
+# (必要なら) 依頼状 1本だけ
+!requests/
+!requests/request_Lyra_Note.md
+
+# (必要なら) 管理用ノートの公開コピー
+!docs/
+!docs/Restart/
+!docs/Restart/Admin/
+!docs/Restart/Admin/Lyra_Design_Note.md
