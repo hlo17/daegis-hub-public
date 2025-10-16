@@ -4,3 +4,4 @@ secrets/
 **/*secret*
 # ignore local grafana data
 ops/grafana/grafana-data/
+bridges/obsidian/mirror/2_Areas/50_Daegis/Daegis OS/Relay/
