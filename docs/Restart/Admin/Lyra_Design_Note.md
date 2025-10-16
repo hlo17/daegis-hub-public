@@ -1,13 +1,9 @@
 
 # 🌿 Lyra Design Note — doctrine & runbooks (Oct-2025)
 
-  
-
 > 本ノートは Lyra（運用AI）のための設計指針／実行原則。
 
 > Gardener は理解できなくてもOK。Lyra が一貫して守るための唯一の参照点。
-
-  
 
 ## 0. スコープと目的
 
@@ -16,7 +12,6 @@
 - 守るべき真実：daegis-hub-public の main が公開の truth。それ以外は派生物。
     
 - 前提：macOS（Private Vaultの原本）＋ Pi（補助）。iPad/iPhone は閲覧/軽作業のみ。
-    
 
 
 ## 2. 論理構成
@@ -32,12 +27,9 @@
 ```
 
 - iPad/iPhone：iCloudの閲覧・軽編集可。ただし原本の最小差分に留める（競合を作らない）。
-    
 
 
 ## 4. 実行コマンド（Lyraの標準動作）
-
-  
 
 ### 4.1 ミラー（既定はDRY）
 
@@ -94,7 +86,6 @@ icloud-nudge     # Finder/cloudd/bird をソフトに再始動
 - 手動で iCloud 経由の差分が出たときは、Mac側の Vault を正にし、次のミラーで公開へ。
     
 - スマホ由来の衝突は Gardener が手で解消（Lyraはファイル比較の支援のみ）。
-    
 
 
 ## 10. 最小ランブック（人間が見る用の3行）
@@ -117,25 +108,70 @@ cd ~/sec-local-shield/Daegis_Hub/public_mirror/daegis-hub-public && \
 - clone を安易に使わない：採用(Adopt)を標準に。
     
 - 分からないときは何もしないでノートに記す（Gardenerが判断）。
-    
 
 
 ## Addendum: Public Mirror Discipline & Safety Nets
+
 **Updated:** {{date:YYYY-MM-DD}} {{time:HH:mm}} UTC+9
 
 ### Principles
+
 - **Single Source of Truth:** Private Trellis is canonical. Public GitHub holds only index & requests.
 - **Mirror Discipline:** Run `mirror-sync` (DRY → review → `--go`) then commit/push in public repo.
 - **Unicode Hygiene:** `core.quotepath=false`, `core.precomposeunicode=true`, `.gitattributes: * text=auto eol=lf`.
 - **No Secrets Public:** images/temp excluded; symlinks are intentional placeholders (no content overflow).
 
 ### Tooling
-- `~/bin/mirror-sync` → Homebrew rsync(iconv)前提。  
-- `~/bin/mac-health` → brew / xcode-select / git 基本健全性チェック。  
-- `~/bin/snap-weekly` → Daisy + dotfiles の簡易スナップショット。  
+
+- `~/bin/mirror-sync` → Homebrew rsync(iconv)前提。
+- `~/bin/mac-health` → brew / xcode-select / git 基本健全性チェック。
+- `~/bin/snap-weekly` → Daisy + dotfiles の簡易スナップショット。
 - `~/bin/icloud-nudge` → Finder/iCloud の安全リスタート。
 
 ### Ops Notes
-- Public で見る“真実”は常に `main`。ズレたら mirror し直せばよい。  
+
+- Public で見る“真実”は常に `main`。ズレたら mirror し直せばよい。
 - 迷ったら **原本優先**、公開は軽量・再生成可能を死守。
 
+
+## そのまま追記できるワンライナー（Mac）
+
+```
+NOTE="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Daisy/2_Areas/50_Daegis/Gardener/🌿 Lyra_Design_Note.md"
+cat >> "$NOTE" <<'MD'
+```
+
+## 🔐 Public Hub Mirror Policy (2025-10)
+
+### 基本方針
+
+- Public Hub は **索引・依頼・管理ノートのみ** を公開する。
+- 実体・一次資料は **Private Trellis (Obsidian)** が正本（canonical）。
+- 公開制御は **deny-all + allowlist (.gitignore)** で行う。
+
+### 公開最小セット
+
+DO-NOT-CLONE.md
+
+Public_Index.md
+
+README.md
+
+docs/Restart/Admin/Lyra_Design_Note.md
+
+requests/request_Lyra_Note.md
+
+### 運用ルール
+
+1. 新規で公開する場合は `.gitignore` の allowlist に明示追加する。
+2. 公開系コミットはメッセージ先頭に `public:` / `docs(public):` を付ける。
+3. Pi 側は 10 分間隔の `lyra-public-sync.timer` で GitHub → Pi を同期。
+4. 緊急時は Pi で `lyra-public-sync` を手動実行、`git reset --hard origin/main && git clean -xfd` で整合回復。
+
+### 役割
+
+- **Owner**: AEGIS (macOS)
+- **Agent**: Lyra (Pi)
+- **Mirror**: GitHub `hlo17/daegis-hub-public`（main）
+MD
+open -a "Obsidian" "$NOTE"
